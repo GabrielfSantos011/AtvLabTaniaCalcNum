@@ -1,18 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <title>Calculadora Bolzano</title>
-  <link rel="stylesheet" href="/interface/style.css" </head>
-
+  <meta charset="UTF-8">
+  <title>Teorema de Bolzano</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
 <body>
-  <h1>Calculadora Bolzano</h1>
-  <div>
+  <h1>Teorema de Bolzano</h1>
+  <form>
+    <label>
+      f(x) =
+      <input type="text" id="coefficient1" value="1">x<sup><input type="text" id="exponent1"></sup> -
+      <input type="text" id="coefficient2" value="1">x<sup><input type="text" id="exponent2"></sup> +
+      <input type="text" id="constant">
+    </label><br><br>
+    <label>
+      A: <input type="text" id="a">
+    </label><br><br>
+    <label>
+      B: <input type="text" id="b">
+    </label><br><br>
+    <button type="button" onclick="calculateRoot()">Calcular Raiz</button>
+  </form>
+  <br><br>
+  <div id="result"></div>
 
+  <script>
+    function bisectionMethod(func, a, b, tolerance) {
+      let c = (a + b) / 2;
+      while (Math.abs(func(c)) > tolerance) {
+        if (func(a) * func(c) < 0) {
+          b = c;
+        } else {
+          a = c;
+        }
+        c = (a + b) / 2;
+      }
+      return c;
+    }
 
-  </div>
+    function func(x) {
+      let coefficient1 = parseInt(document.getElementById("coefficient1").value);
+      let coefficient2 = parseInt(document.getElementById("coefficient2").value);
+      let exponent1 = parseInt(document.getElementById("exponent1").value);
+      let exponent2 = parseInt(document.getElementById("exponent2").value);
+      let constant = parseInt(document.getElementById("constant").value);
+      return coefficient1 * x ** exponent1 - coefficient2 * x ** exponent2 + constant;
+    }
 
+    function calculateRoot() {
+      let a = parseFloat(document.getElementById("a").value);
+      let b = parseFloat(document.getElementById("b").value);
+      let tolerance = 1e-6;
+      if (isNaN(a) || isNaN(b)) {
+        alert("Os valores de A e B precisam ser números válidos.");
+        return;
+      }
+      let root = bisectionMethod(func, a, b, tolerance);
+      document.getElementById("result").innerHTML = "A raiz é: " + root;
+    }
+  </script>
 </body>
 
 </html>
