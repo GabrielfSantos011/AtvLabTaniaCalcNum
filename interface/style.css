@@ -1,8 +1,70 @@
-h1 {
-  color: black;
-  border-color: yellow;
-}
 body {
-  background-color: aquamarine;
-  font-family: Arial;
+  background-color: navy;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+h1 {
+  font-size: 36px;
+  margin-top: 40px;
+  color: white;
+}
+
+form {
+  display: inline-block;
+  text-align: left;
+  margin-top: 40px;
+}
+
+label {
+  font-size: 18px;
+  display: block;
+  margin-bottom: 10px;
+  color: white;
+}
+
+input[type="text"] {
+  font-size: 16px;
+  padding: 10px;
+  width: 70px;
+  border: 2px solid black;
+  border-radius: 10px;
+  text-align: center;
+}
+
+sup {
+  font-size: 10px;
+}
+
+input[id="exponent1"],
+input[id="exponent2"] {
+  width: 30px;
+  font-size: 14px;
+}
+
+sup {
+  font-size: 12px;
+}
+
+button {
+  font-size: 18px;
+  padding: 10px 20px;
+  margin-top: 40px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
+}
+
+#result {
+  font-size: 18px;
+  margin-top: 40px;
+  color: white;
 }
